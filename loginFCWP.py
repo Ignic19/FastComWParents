@@ -1,33 +1,41 @@
 from tkinter import *
+from tkinter import messagebox
+import sqlite3
 
-raiz = Tk()
+ventanaLogin = Tk()
+ventanaLogin.title ("Iniciar Sesión")
+ventanaLogin.geometry ("350x150+500+250")
 
-miFrame=Frame(raiz, width=1200, height=2000)
-miFrame.pack()
 
-minombre=StringVar()
+Label(ventanaLogin, text = "Usuario").pack()
+cuadroUsuario = Entry(ventanaLogin)
+cuadroUsuario.pack()
 
-cuadroNombre=Entry(miFrame, textvariable=minombre)
-cuadroNombre.grid(row=0, column=1, padx=10, pady=10)
-cuadroNombre.config(fg="blue")
+Label(ventanaLogin, text = "Contraseña").pack()
+cuadroPassword = Entry(ventanaLogin, show = "*")
+cuadroPassword.pack()
 
-cuadroPassword=Entry(miFrame)
-cuadroPassword.grid(row=1, column=1, padx=10, pady=10)
-cuadroPassword.config(show="*")
+def login():
+	
+	db = sqlite3.connect('C:/Users/Ignac/Desktop/FCWP.db')
+	c = db.cursor()
+	
+	usuario = cuadroUsuario.get()
+	claves = cuadroPassword.get()
+	
+	c.execute('SELECT * FROM usuarios WHERE usuario = ? AND claves = ?', (usuario, claves))
+	
+	if c.fetchall():
+		messagebox.showinfo(title = "Iniciando Sesión", message = "Iniciando Sesión")
+	else:
+		messagebox.showerror(title = "Login incorrecto", message = "Usuario o contraseña incorrecta")
+		
+	c.close()
 
-nombreLabel=Label(miFrame, text="Nombre:")
-nombreLabel.grid(row=0, column=0, sticky="e", padx=10, pady=10)
+Button (text = "Login", command = login).pack()
 
-passwordLabel=Label(miFrame, text="Password:")
-passwordLabel.grid(row=1, column=0, sticky="e", padx=10, pady=10)
 
-def codigoBoton():
 
-	minombre.set("Ignacio")
 
-botonEnvio=Button(raiz, text="Iniciar Sesión", command=codigoBoton)
-botonEnvio.pack()
 
-##Button(miFrame, text="Entrar").grid(row=6, column=1, padx=10, pady=10)
-
-raiz.mainloop()
+ventanaLogin.mainloop()
