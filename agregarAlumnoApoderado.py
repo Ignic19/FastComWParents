@@ -73,10 +73,30 @@ cuadroTelefonoSustituto=Entry(miFrame5)
 cuadroTelefonoSustituto.grid(row=6, column=1, padx=10, pady=10)
 
 
+def FichaNueva():
+	
+	db = sqlite3.connect('C:/Users/Ignac/Desktop/FCWP.db')
+	c = db.cursor()
+	
+	NombreAlumno = cuadroNombreAlumnoNuevoReg.get()
+	ApellidoAlumno = cuadroApellidoAlumnoNuevoReg.get()
+	Curso = cuadroCurso.get()
+	LetraCurso = cuadroLetraCurso.get()
+	NombreApoderado= cuadroNombreApoderado1.get()
+	ApellidoApoderado = cuadroApellidoApoderado1.get()
+	TelefonoApoderado = cuadroTelefonoApoderado1.get()
+	ApoderadoSecundario = cuadroApoderadoSustituto.get()
+	ApellidoApoderadoSecundario = cuadroApellidoApoderadoSustituto.get()
+	TelefonoApoderadoSecundario = cuadroTelefonoSustituto.get()
+	
+	c.execute('INSERT INTO DatosAlumnos ('NombreAlumno','ApellidoAlumno', 'Curso','LetraCurso','NombreApoderado','ApellidoApoderado','TelefonoApoderado','ApoderadoSecundario','ApellidoApoderadoSecundario','TelefonoApoderadoSecundario') ')
 
+c.close()
 
-botonGuardarInfo=Button(miFrame5, text="Guardar Información").grid(row=8, column=3)
-INSERT INTO DatosAlumnos ("*Nombre Alumno*", "*Apellido Alumno*", "*Curso(1,2,3,4,...)*", "*Letra curso(A,B)", "*Nombre Apoderado*", "*Apellido Apoderado*", "*Telefono Apoderado*", "*Apoderado Secundario*", "*Apellido Apoderado Secundario*", "*Telefono Apoderado Secundario*")
+Button (text = "Guardar Información", command = FichaNueva).pack()
+
+#botonGuardarInfo=Button(miFrame5, text="Guardar Información", command = FichaNueva).pack()
+#botonGuardarInfo.grid(row=8, column=3)
 
 
 raiz.mainloop()
