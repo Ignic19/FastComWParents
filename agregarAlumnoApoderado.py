@@ -89,9 +89,7 @@ def FichaNueva():
 	ApellidoApoderadoSecundario = cuadroApellidoApoderadoSustituto.get()
 	TelefonoApoderadoSecundario = cuadroTelefonoSustituto.get()
 	
-	c.execute('INSERT INTO DatosAlumnos ('NombreAlumno','ApellidoAlumno', 'Curso','LetraCurso','NombreApoderado','ApellidoApoderado','TelefonoApoderado','ApoderadoSecundario','ApellidoApoderadoSecundario','TelefonoApoderadoSecundario') ')
-
-c.close()
+	c.execute #('INSERT INTO DatosAlumnos (NombreAlumno,ApellidoAlumno,Curso,LetraCurso,NombreApoderado,ApellidoApoderado,TelefonoApoderado,NombreApoderadoSecundario,ApellidoApoderadoSecundario,TelefonoApoderadoSecundario) VALUES (?,?,?,?,?,?,?,?,?,?)'), (NombreAlumno,ApellidoAlumno,Curso,LetraCurso,NombreApoderado,ApellidoApoderado,TelefonoApoderado,ApoderadoSecundario,ApellidoApoderadoSecundario,TelefonoApoderadoSecundario,))
 
 Button (text = "Guardar Información", command = FichaNueva).pack()
 
