@@ -1,4 +1,7 @@
+import sys
+import os
 from tkinter import *
+import sqlite3
 
 raiz=Tk()
 raiz.title("Eliminar Registro")
@@ -25,10 +28,18 @@ InserteCursoElim.grid(row=2, column=0, sticky="e", padx=10, pady=10)
 cuadroCursoElim=Entry(miFrame6)
 cuadroCursoElim.grid(row=2, column=1, padx=10, pady=10)
 
+def login():
+	
+	db = sqlite3.connect('C:/Users/Ignac/Desktop/FCWP.db')
+	c = db.cursor()
 
+	NombreAlumno = cuadroNombreAlumnoElimReg.get()
+	ApellidoAlumno = cuadroApellidoAlumnoElimReg.get()
+	Curso = cuadroCursoElim.get()
+
+	c.execute('DELETE FROM DatosAlumnos WHERE NombreAlumno = ?, ApellidoAlumno = ? AND Curso = ?',(NombreAlumno, ApellidoAlumno, Curso))
 
 botonGuardarInfo=Button(miFrame6, text="Eliminar Registro").grid(row=8, column=3)
-#falta funcion + query para elimiar el registro
-#DELETE FROM ficha WHERE 'NombreAlumno'= xxx, 'ApellidoAlumno'= xxx2, 'Curso'= xx;
+
 
 raiz.mainloop()

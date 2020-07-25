@@ -33,14 +33,10 @@ def login():
 	else:
 		messagebox.showerror(title = "Login incorrecto", message = "Usuario o contraseña incorrecta")
 		
-	c.destroy()
+	# c.destroy()
+	#Falta agregar comando en el if para lanzar a la ventana de menuInterfaz.py
+
 
 Button (text = "Login", command = login).pack()
-
-def abrirmenuinterfaz():
-
-	menuInterfaz = Toplevel(ventanaLogin)
-	menuInterfaz.title("Menu Interfaz")
-	menuInterfaz.geometry("300x250")
 
 ventanaLogin.mainloop()
