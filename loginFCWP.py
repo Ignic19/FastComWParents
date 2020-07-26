@@ -3,7 +3,7 @@ import os
 from tkinter import *
 from tkinter import messagebox
 import sqlite3
-# import menuIntefaz
+
 
 ventanaLogin = Tk()
 ventanaLogin.title ("Iniciar Sesión")
@@ -18,6 +18,11 @@ Label(ventanaLogin, text = "Contraseña").pack()
 cuadroPassword = Entry(ventanaLogin, show = "*")
 cuadroPassword.pack()
 
+def menuInterfaz():
+	os.system("menuInterfaz.py")
+
+botonEnvio=Button(ventanaLogin, text="Enviar comunicado", command=menuInterfaz).pack()
+
 def login():
 	
 	db = sqlite3.connect('C:/Users/Ignac/Desktop/FCWP.db')
@@ -30,13 +35,14 @@ def login():
 	
 	if c.fetchall():
 		messagebox.showinfo(title = "Iniciando Sesión", message = "Iniciando Sesión")
+
 	else:
 		messagebox.showerror(title = "Login incorrecto", message = "Usuario o contraseña incorrecta")
-		
-	# c.destroy()
+
+
 	#Falta agregar comando en el if para lanzar a la ventana de menuInterfaz.py
 
-
 Button (text = "Login", command = login).pack()
+
 
 ventanaLogin.mainloop()
