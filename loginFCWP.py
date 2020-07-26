@@ -18,10 +18,14 @@ Label(ventanaLogin, text = "Contraseña").pack()
 cuadroPassword = Entry(ventanaLogin, show = "*")
 cuadroPassword.pack()
 
+#------------------------------------------------- esto hace que el boton de pasar a la siguiente pagina habra el menu
+
 def menuInterfaz():
 	os.system("menuInterfaz.py")
 
 botonEnvio=Button(ventanaLogin, text="Enviar comunicado", command=menuInterfaz).pack()
+
+#-------------------------------------------------
 
 def login():
 	

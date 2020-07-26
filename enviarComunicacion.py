@@ -43,10 +43,6 @@ textoComentario=Text(app, width=30, height=10)
 textoComentario.grid(row=4, column=2, padx=10, pady=10)
 
 
-#cuadroComunicacion=ttk.Entry(app)
-#cuadroComunicacion.grid(row=2, column=2, padx=10, pady=10)
-
-
 EnviarMensaje=Button(app, text="Enviar", width=15, height=2, command=enviarDatos)
 EnviarMensaje.grid(row=5, column=2)
 
